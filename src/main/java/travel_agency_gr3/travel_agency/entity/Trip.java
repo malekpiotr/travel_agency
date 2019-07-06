@@ -1,7 +1,8 @@
-package travel_agency_gr3.travel_agency.entity.Trip;
+package travel_agency_gr3.travel_agency.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import travel_agency_gr3.travel_agency.entity.FoodType;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,26 +15,10 @@ import java.util.Date;
 @Entity
 public class Trip {
 
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "id=" + id +
-                ", destinationName='" + destinationName + '\'' +
-                ", dateOfDeparture=" + dateOfDeparture +
-                ", dateOfReturn=" + dateOfReturn +
-                ", numberOfDays=" + numberOfDays +
-                ", foodType=" + foodType +
-                ", addultPrice=" + addultPrice +
-                ", childPrice=" + childPrice +
-                ", numberAdultPlaces=" + numberAdultPlaces +
-                ", numberChildPlaces=" + numberChildPlaces +
-                ", promotion=" + promotion +
-                '}';
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private String destinationName;
     private Date dateOfDeparture;
     private Date dateOfReturn;
@@ -46,6 +31,10 @@ public class Trip {
     private boolean promotion;
 
     public Trip() {
+    }
+
+    public Trip(String name) {
+        this.name = name;
     }
 
     public Long getId() {

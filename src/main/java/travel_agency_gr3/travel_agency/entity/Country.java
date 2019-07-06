@@ -1,21 +1,21 @@
-package travel_agency_gr3.travel_agency.entity.Trip;
+package travel_agency_gr3.travel_agency.entity;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
 @Setter
+@Getter
 @Entity
-public class Airport {
+public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToOne
-    private City city;
+    @ManyToOne
+    private Continent continent;
 
-    public Airport() {
+    public Country() {
     }
 }

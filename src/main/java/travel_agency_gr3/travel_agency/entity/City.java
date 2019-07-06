@@ -1,24 +1,20 @@
-package travel_agency_gr3.travel_agency.entity.Trip;
+package travel_agency_gr3.travel_agency.entity;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-
 @Getter
 @Setter
 @Entity
-public class Hotel {
-
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private HotelStandard hotelStandard;
-    private String description;
-
     @OneToOne
-    private City city;
-    public Hotel() {
+    private Country country;
+
+    public City() {
     }
 }

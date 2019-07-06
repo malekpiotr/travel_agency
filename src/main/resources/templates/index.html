@@ -9,24 +9,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pierwsza strona</title>    <link th:href ="@{css/bootstrap.min.css}" rel="stylesheet">
+    <title>Pierwsza strona</title>
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
 
-    <link th:href ="@{css/style.css}" rel="stylesheet">  </head>
+    <link th:href="@{css/style.css}" rel="stylesheet">
+</head>
 
-<body><div class="container-fluid"><div class="row"><div class="col-md-8">
+<body>
 
-    <span th:text="${someText}" class="badge badge-info">Label</span>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
 
-    <h1>Pętla w thymeleaf</h1><h1>Wycieczki</h1><table><tr><th>ID</th><th>NAZWA</th></tr>
-    <tr th:each="trip,iterationStatus : ${trips}"><td th:text="${iterationStatus.count}">1</td>
-        <td th:text="${trips}">Name</td>      </tr></table></div><div class="col-md-4">
+            <span th:text="${someText}" class="badge badge-info">Label</span>
 
-</div>    </div></div>
+            <h1>Pętla w thymeleaf</h1>
+            <h1>Wycieczki</h1>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>NAZWA</th>
+                </tr>
+                <tr th:each="trip,iterationStatus : ${trips}">
+                    <td th:text="${iterationStatus.count}">1</td>
+                    <td th:text="${trip.getName()}">Name</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</div>
 
 <script src="js/jquery.min.js"></script>
 
 <script src="js/bootstrap.min.js"></script>
 
-<script src="js/scripts.js"></script>  </body>
+<script src="js/scripts.js"></script>
+</body>
 
 </html>
