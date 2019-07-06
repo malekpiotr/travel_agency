@@ -13,6 +13,24 @@ import java.util.Date;
 @Setter
 @Entity
 public class Trip {
+
+    @Override
+    public String toString() {
+        return "Trip{" +
+                "id=" + id +
+                ", destinationName='" + destinationName + '\'' +
+                ", dateOfDeparture=" + dateOfDeparture +
+                ", dateOfReturn=" + dateOfReturn +
+                ", numberOfDays=" + numberOfDays +
+                ", foodType=" + foodType +
+                ", addultPrice=" + addultPrice +
+                ", childPrice=" + childPrice +
+                ", numberAdultPlaces=" + numberAdultPlaces +
+                ", numberChildPlaces=" + numberChildPlaces +
+                ", promotion=" + promotion +
+                '}';
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,5 +46,93 @@ public class Trip {
     private boolean promotion;
 
     public Trip() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDestinationName() {
+        return destinationName;
+    }
+
+    public void setDestinationName(String destinationName) {
+        this.destinationName = destinationName;
+    }
+
+    public Date getDateOfDeparture() {
+        return dateOfDeparture;
+    }
+
+    public void setDateOfDeparture(Date dateOfDeparture) {
+        this.dateOfDeparture = dateOfDeparture;
+    }
+
+    public Date getDateOfReturn() {
+        return dateOfReturn;
+    }
+
+    public void setDateOfReturn(Date dateOfReturn) {
+        this.dateOfReturn = dateOfReturn;
+    }
+
+    public int getNumberOfDays() {
+        return numberOfDays;
+    }
+
+    public void setNumberOfDays(int numberOfDays) {
+        this.numberOfDays = numberOfDays;
+    }
+
+    public FoodType getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(FoodType foodType) {
+        this.foodType = foodType;
+    }
+
+    public double getAddultPrice() {
+        return addultPrice;
+    }
+
+    public void setAddultPrice(double addultPrice) {
+        this.addultPrice = addultPrice;
+    }
+
+    public double getChildPrice() {
+        return childPrice;
+    }
+
+    public void setChildPrice(double childPrice) {
+        this.childPrice = childPrice;
+    }
+
+    public int getNumberAdultPlaces() {
+        return numberAdultPlaces;
+    }
+
+    public void setNumberAdultPlaces(int numberAdultPlaces) {
+        this.numberAdultPlaces = numberAdultPlaces;
+    }
+
+    public int getNumberChildPlaces() {
+        return numberChildPlaces;
+    }
+
+    public void setNumberChildPlaces(int numberChildPlaces) {
+        this.numberChildPlaces = numberChildPlaces;
+    }
+
+    public boolean isPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
     }
 }
