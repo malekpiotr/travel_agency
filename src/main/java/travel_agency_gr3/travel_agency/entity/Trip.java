@@ -2,6 +2,7 @@ package travel_agency_gr3.travel_agency.entity.Trip;
 
 import lombok.Getter;
 import lombok.Setter;
+import travel_agency_gr3.travel_agency.entity.FoodType;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
