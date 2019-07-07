@@ -15,15 +15,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "system_type",
-discriminatorType = DiscriminatorType.STRING)
-public class Trip {
+public class Trip extends BaseEntity{
 
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String destinationName;
     private Date dateOfDeparture;
     private Date dateOfReturn;

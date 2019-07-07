@@ -8,7 +8,7 @@ import travel_agency_gr3.travel_agency.repository.TripRepo;
 @Service
 public class TripDTOBuilder {
     @Autowired
-    private TripRepo<Trip> tripTripRepo;
+    private TripRepo<Trip> tripRepo;
 
     public TripDTO buildDTo(Trip trip) {
         return TripDTO.builder()
@@ -32,7 +32,7 @@ public class TripDTOBuilder {
         if (dto.getId() == null) {
             trip = new Trip();
         } else {
-            trip = tripTripRepo.getOne(dto.getId());
+            trip = tripRepo.getOne(dto.getId());
         }
 
         trip.setAddultPrice(dto.getAddultPrice());

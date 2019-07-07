@@ -1,6 +1,8 @@
 package travel_agency_gr3.travel_agency.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 public enum FoodType {
