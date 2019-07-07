@@ -1,27 +1,24 @@
-package travel_agency_gr3.travel_agency.service;
+package travel_agency_gr3.travel_agency.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import travel_agency_gr3.travel_agency.entity.Trip;
 import travel_agency_gr3.travel_agency.repository.TripRepo;
 
 import java.util.List;
-import java.util.Optional;
 
+@RestController
 @RequestMapping("/add")
-public class ServiceTrip {
+public class ApiTrip {
     private TripRepo tripRepo;
 
     @Autowired
-    public ServiceTrip(TripRepo tripRepo){
+    public ApiTrip(TripRepo tripRepo){
         this.tripRepo=tripRepo;
     }
 
     @GetMapping
-    public Iterable<Trip>getTrip(){
+    public List<Trip> getTrip(){
         return tripRepo.findAll();
     }
 
