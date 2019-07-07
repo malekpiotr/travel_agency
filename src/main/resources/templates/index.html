@@ -1,52 +1,10 @@
 <!DOCTYPE html>
-
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en">
 <head>
-
-    <meta charset="utf-8">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pierwsza strona</title>
-    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
-
-    <link th:href="@{css/style.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Biuro podróży grupa 3 strona główna</title>
 </head>
-
 <body>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8">
-
-            <span th:text="${someText}" class="badge badge-info">Label</span>
-
-            <h1>Pętla w thymeleaf</h1>
-            <h1>Wycieczki</h1>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>NAZWA</th>
-                </tr>
-                <tr th:each="trip,iterationStatus : ${trips}">
-                    <td th:text="${iterationStatus.count}">1</td>
-                    <td th:text="${trip.getName()}">Name</td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-md-4">
-
-        </div>
-    </div>
-</div>
-
-<script src="js/jquery.min.js"></script>
-
-<script src="js/bootstrap.min.js"></script>
-
-<script src="js/scripts.js"></script>
+<h1>Biuro podróży grupa 3 strona główna</h1>
 </body>
-
 </html>

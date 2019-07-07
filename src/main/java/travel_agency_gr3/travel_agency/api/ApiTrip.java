@@ -2,10 +2,8 @@ package travel_agency_gr3.travel_agency.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import travel_agency_gr3.travel_agency.entity.Trip;
 import travel_agency_gr3.travel_agency.repository.TripRepo;
-
-import java.util.List;
+import travel_agency_gr3.travel_agency.entity.Trip;
 
 @RestController
 @RequestMapping("/add")
@@ -18,7 +16,7 @@ public class ApiTrip {
     }
 
     @GetMapping
-    public List<Trip> getTrip(){
+    public Iterable<Trip>getTrip(){
         return tripRepo.findAll();
     }
 
