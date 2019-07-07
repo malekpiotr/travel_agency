@@ -42,13 +42,13 @@ public class MainController {
         tripSet.add(trip3);
     }
 
-    @GetMapping("/")
+    @GetMapping("/trips")
 
     public ModelAndView getMain() {
 
         ModelAndView m = new ModelAndView();
 
-        m.setViewName("index");
+        m.setViewName("trips");
 
         m.addObject("someText", someText);
 
