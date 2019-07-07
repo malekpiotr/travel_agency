@@ -29,19 +29,19 @@ public class MainController {
     public void addTrip(){
         Trip trip = new Trip();
         trip.setNumberOfDays(8);
-        trip.setAddultPrice(2000);
+        trip.setAddultPrice(2000d);
         trip.setDestinationName("Italy");
         trip.setName("Wycieczka do Włoch");
         tripRepo.save(trip);
         Trip trip2 = new Trip();
         trip2.setNumberOfDays(8);
-        trip2.setAddultPrice(2000);
+        trip2.setAddultPrice(2000d);
         trip2.setDestinationName("Majorka");
         trip2.setName("Wycieczka na Majorrrę");
         tripRepo.save(trip2);
         Trip trip3 = new Trip();
         trip3.setNumberOfDays(8);
-        trip3.setAddultPrice(2000);
+        trip3.setAddultPrice(2000d);
         trip3.setDestinationName("Greece");
         trip3.setName("Wycieczka do Grecji");
         tripRepo.save(trip3);
