@@ -14,22 +14,6 @@ import java.util.Date;
 @Entity
 public class Trip {
 
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "id=" + id +
-                ", destinationName='" + destinationName + '\'' +
-                ", dateOfDeparture=" + dateOfDeparture +
-                ", dateOfReturn=" + dateOfReturn +
-                ", numberOfDays=" + numberOfDays +
-                ", foodType=" + foodType +
-                ", addultPrice=" + addultPrice +
-                ", childPrice=" + childPrice +
-                ", numberAdultPlaces=" + numberAdultPlaces +
-                ", numberChildPlaces=" + numberChildPlaces +
-                ", promotion=" + promotion +
-                '}';
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,8 +28,17 @@ public class Trip {
     private int numberAdultPlaces;
     private int numberChildPlaces;
     private boolean promotion;
+    private String name;
 
     public Trip() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {
