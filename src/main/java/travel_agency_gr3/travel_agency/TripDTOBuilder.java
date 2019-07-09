@@ -10,7 +10,7 @@ public class TripDTOBuilder {
     @Autowired
     private TripRepo<Trip> tripRepo;
 
-    public TripDTO buildDTo(Trip trip) {
+    public TripDTO buildDto(Trip trip) {
         return TripDTO.builder()
                 .id(trip.getId())
                 .addultPrice(trip.getAddultPrice())

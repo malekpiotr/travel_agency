@@ -89,12 +89,12 @@ public class TripService {
         return findTripQuery(query, foodType)
                 .stream()
                 .filter(e -> ObjectUtils.defaultIfNull(e.getAddultPrice(), 0d) > 0d)
-                .map(tripDTOBuilder::buildDTo)
+                .map(tripDTOBuilder::buildDto)
                 .collect(Collectors.toList());
     }
 
     public Optional<TripDTO> findTriptById(Long id) {
-        return tripRepo.findById(id).map(tripDTOBuilder::buildDTo);
+        return tripRepo.findById(id).map(tripDTOBuilder::buildDto);
     }
 
     public DataTablesResponse<TripDTO> getTripDataTable(Integer start, Integer length, String sortColumn, String sortOrder, String searchText) {
@@ -102,7 +102,7 @@ public class TripService {
         Page<Trip> tripByName = findTripByName(searchText, start == 0 ? 0 : (start / length), length, getSort(sortColumn, sortOrder));
         dtResponse.setData(tripByName.getContent()
                 .stream()
-                .map(tripDTOBuilder::buildDTo)
+                .map(tripDTOBuilder::buildDto)
                 .collect(Collectors.toList()));
         dtResponse.setRecordsTotal((int) tripByName.getTotalElements());
         dtResponse.setRecordsFiltered((int) tripByName.getTotalElements());

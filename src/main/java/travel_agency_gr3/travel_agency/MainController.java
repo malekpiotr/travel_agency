@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import travel_agency_gr3.travel_agency.api.ApiTrip;
 import travel_agency_gr3.travel_agency.entity.Trip;
@@ -26,7 +27,8 @@ public class MainController {
 //    @Autowired
 //    TripRepo tripRepo;
 //    ApiTrip apiTrip = new ApiTrip(tripRepo);
-    TripService tripService = new TripService();
+    @Autowired
+    TripService tripService;
 
 //    @EventListener(ApplicationReadyEvent.class)
 //    public void addTrip(){
@@ -59,9 +61,9 @@ public class MainController {
 
         m.addObject("someText", someText);
 
-        initTrip();
+        //initTrip();
 
-        m.addObject("trips",tripSet );
+        m.addObject("trips",tripService.findAllTrips() );
 
         return m;
 
@@ -70,7 +72,7 @@ public class MainController {
 
     public void initTrip() {
         for (Trip trip : tripService.findAllTrips()) {
-            tripSet.add(trip);
+            tripSet.add( trip);
         }
 
     }
