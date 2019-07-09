@@ -3,6 +3,7 @@ package travel_agency_gr3.travel_agency;
 import lombok.*;
 import travel_agency_gr3.travel_agency.entity.FoodType;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Optional;
 
@@ -14,8 +15,8 @@ import java.util.Optional;
 public class TripDTO {
     private Long id;
     private String destinationName;
-    private Date dateOfDeparture;
-    private Date dateOfReturn;
+    private LocalDateTime dateOfDeparture;
+    private LocalDateTime dateOfReturn;
     private int numberOfDays;
     private FoodType foodType;
     private double addultPrice;

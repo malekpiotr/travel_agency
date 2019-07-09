@@ -18,8 +18,8 @@ public interface TripRepo<T extends Trip> extends JpaRepository<Trip, Long>, Que
 
     List<T> findTripByFoodType(FoodType foodType);
 
-    @Query ("SELECT t FROM Trip t")
-    List<T> findAllTrip();
+    @Query ("SELECT t FROM Trip t where (t.promotion)=true")
+    List<T> findPromotionTrip();
 
     @Query("select t from Trip t where upper(t.name) like concat('%',upper(?1),'%')")
     List<T> findTripByName(String searchText);

@@ -17,6 +17,7 @@ import travel_agency_gr3.travel_agency.entity.Trip;
 import travel_agency_gr3.travel_agency.repository.TripRepo;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -32,8 +33,8 @@ public class TripService {
     private TripRepo<Trip> tripRepo;
 
     public void createNewTrip(String destinationName,
-                              Date dateOfDeparture,
-                              Date dateOfReturn,
+                              LocalDateTime dateOfDeparture,
+                              LocalDateTime dateOfReturn,
                               Integer numberOfDays,
                               FoodType foodType,
                               Double addultPrice,
@@ -63,8 +64,8 @@ public class TripService {
         return tripRepo.findById(id);
     }
 
-    public List<Trip> findAllTrips(){
-        return tripRepo.findAllTrip();
+    public List<Trip> findPromotionTrips(){
+        return tripRepo.findPromotionTrip();
     }
 
 
@@ -116,10 +117,10 @@ public class TripService {
         Function<String, Page<Trip>> supplierForBlankQuery = (q) -> tripRepo.findAll(QTrip.trip.numberAdultPlaces.goe(1), PageRequest.of(page, size, sort));
         return StringUtils.isBlank(query) ? supplierForBlankQuery.apply(query) : supplierForNotBlankQuery.apply(query);
     }
-    private void mockProduct(String name,
+    private void mockTrip(String name,
                              String destinationName,
-                             Date dateOfDeparture,
-                             Date dateOfReturn,
+                             LocalDateTime dateOfDeparture,
+                             LocalDateTime dateOfReturn,
                              int numberOfDays,
                              FoodType foodType,
                              double addultPrice,

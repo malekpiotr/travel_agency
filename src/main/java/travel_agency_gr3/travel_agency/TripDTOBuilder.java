@@ -45,7 +45,7 @@ public class TripDTOBuilder {
         trip.setNumberAdultPlaces(dto.getNumberAdultPlaces());
         trip.setNumberChildPlaces(dto.getNumberChildPlaces());
         trip.setNumberOfDays(dto.getNumberOfDays());
-        trip.isPromotion();
+        trip.setPromotion(dto.isPromotion());
         return trip;
     }
 }
