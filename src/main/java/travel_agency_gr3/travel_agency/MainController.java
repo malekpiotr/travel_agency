@@ -8,47 +8,65 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.servlet.ModelAndView;
-import travel_agency_gr3.travel_agency.entity.City;
-import travel_agency_gr3.travel_agency.entity.Trip;
+import travel_agency_gr3.travel_agency.DTO.TripDTO;
+import travel_agency_gr3.travel_agency.DTOBuilder.CityDTOBuilder;
+import travel_agency_gr3.travel_agency.Service.CityService;
+import travel_agency_gr3.travel_agency.Service.TripService;
+import travel_agency_gr3.travel_agency.entity.Country;
+import travel_agency_gr3.travel_agency.repository.CountryRepo;
 
 @Controller
 public class MainController {
     @Autowired
     TripService tripService;
 
+    @Autowired
+    CityService cityService;
+    @Autowired
+    CountryRepo countryRepo;
+
+    @Autowired
+    CityDTOBuilder cityDTOBuilder;
+
     String someText = "Promowane oferty";
 
     @EventListener(ApplicationReadyEvent.class)
-    public void addTrip(){
-        City city1 = new City();
-        city1.setName("Szczecin");
+    public void addTrip() {
+
+        Country country = new Country();
+        country.setName("Polska");
+        countryRepo.save(country);
+        cityService.createNewCity(country, "Szczecin");
+
         TripDTO trip = new TripDTO();
         trip.setNumberOfDays(8);
         trip.setAddultPrice(2000d);
-        trip.setDestinationName(city1);
+        trip.setDestinationName(cityService.findCity("Szczecin"));
         trip.setName("Wycieczka do Włoch");
         trip.setPromotion(true);
         tripService.updateTrip(trip);
 
-        City city2 = new City();
-        city2.setName("Berlin");
-        TripDTO trip2 = new TripDTO();
-        trip2.setNumberOfDays(8);
-        trip2.setAddultPrice(2000d);
-        trip2.setDestinationName(city2);
-        trip2.setName("Wycieczka na Majorrrę");
-        trip2.setPromotion(true);
-        tripService.updateTrip(trip2);
-
-        City city3 = new City();
-        city3.setName("Amsterdam");
-        TripDTO trip3 = new TripDTO();
-        trip3.setNumberOfDays(8);
-        trip3.setAddultPrice(2000d);
-        trip3.setDestinationName(city3);
-        trip3.setName("Wycieczka do Grecji");
-        trip3.setPromotion(true);
-        tripService.updateTrip(trip3);
+//        CityDTO city2 = new CityDTO();
+//        city2.setName("Berlin");
+//        cityService.updateCity(city2);
+//        TripDTO trip2 = new TripDTO();
+//        trip2.setNumberOfDays(8);
+//        trip2.setAddultPrice(2000d);
+//        trip2.setDestinationName(city2);
+//        trip2.setName("Wycieczka na Majorrrę");
+//        trip2.setPromotion(true);
+//        tripService.updateTrip(trip2);
+//
+//        CityDTO city3 = new CityDTO();
+//        city3.setName("Amsterdam");
+//        cityService.updateCity(city3);
+//        TripDTO trip3 = new TripDTO();
+//        trip3.setNumberOfDays(8);
+//        trip3.setAddultPrice(2000d);
+//        trip3.setDestinationName(city3);
+//        trip3.setName("Wycieczka do Grecji");
+//        trip3.setPromotion(true);
+//        tripService.updateTrip(trip3);
     }
 
     @GetMapping("/trips")
@@ -60,7 +78,7 @@ public class MainController {
 
         m.addObject("someText", someText);
 
-        m.addObject("trips",tripService.findPromotionTrips());
+        m.addObject("trips", tripService.findPromotionTrips());
 
         return m;
 

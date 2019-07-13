@@ -1,9 +1,9 @@
-package travel_agency_gr3.travel_agency;
+package travel_agency_gr3.travel_agency.DTOBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import travel_agency_gr3.travel_agency.DTO.CityDTO;
 import travel_agency_gr3.travel_agency.entity.City;
-import travel_agency_gr3.travel_agency.entity.Trip;
 import travel_agency_gr3.travel_agency.repository.CityRepo;
 
 @Service

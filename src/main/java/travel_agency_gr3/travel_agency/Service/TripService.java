@@ -1,14 +1,14 @@
-package travel_agency_gr3.travel_agency;
+package travel_agency_gr3.travel_agency.Service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Page;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import travel_agency_gr3.travel_agency.DTO.TripDTO;
+import travel_agency_gr3.travel_agency.DTOBuilder.TripDTOBuilder;
 import travel_agency_gr3.travel_agency.datatables.DataTablesOrder;
 import travel_agency_gr3.travel_agency.datatables.DataTablesResponse;
 import travel_agency_gr3.travel_agency.entity.City;
@@ -17,9 +17,7 @@ import travel_agency_gr3.travel_agency.entity.QTrip;
 import travel_agency_gr3.travel_agency.entity.Trip;
 import travel_agency_gr3.travel_agency.repository.TripRepo;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;

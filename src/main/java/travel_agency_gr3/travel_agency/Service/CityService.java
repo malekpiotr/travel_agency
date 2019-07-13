@@ -1,11 +1,12 @@
-package travel_agency_gr3.travel_agency;
+package travel_agency_gr3.travel_agency.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import travel_agency_gr3.travel_agency.DTO.CityDTO;
+import travel_agency_gr3.travel_agency.DTOBuilder.CityDTOBuilder;
 import travel_agency_gr3.travel_agency.entity.City;
 import travel_agency_gr3.travel_agency.entity.Country;
 import travel_agency_gr3.travel_agency.repository.CityRepo;
-import travel_agency_gr3.travel_agency.repository.TripRepo;
 
 @Service
 public class CityService {
@@ -31,5 +32,15 @@ public class CityService {
         cityRepo.deleteById(id);
     }
 
+    public City findCity(String name){
+        for (City city: cityRepo.findAll()) {
+            if (city.getName().equals(name)){
+                return city;
+            }else {
+                return null;
+            }
+        }
+        return null;
+    }
 
 }
