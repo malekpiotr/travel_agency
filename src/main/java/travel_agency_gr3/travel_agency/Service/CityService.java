@@ -33,14 +33,7 @@ public class CityService {
     }
 
     public City findCity(String name){
-        for (City city: cityRepo.findAll()) {
-            if (city.getName().equals(name)){
-                return city;
-            }else {
-                return null;
-            }
-        }
-        return null;
+        return cityRepo.findCityByName(name);
     }
 
 }

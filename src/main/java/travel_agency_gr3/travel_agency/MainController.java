@@ -12,6 +12,7 @@ import travel_agency_gr3.travel_agency.DTO.TripDTO;
 import travel_agency_gr3.travel_agency.DTOBuilder.CityDTOBuilder;
 import travel_agency_gr3.travel_agency.Service.CityService;
 import travel_agency_gr3.travel_agency.Service.TripService;
+import travel_agency_gr3.travel_agency.entity.City;
 import travel_agency_gr3.travel_agency.entity.Country;
 import travel_agency_gr3.travel_agency.repository.CountryRepo;
 
@@ -36,6 +37,7 @@ public class MainController {
         Country country = new Country();
         country.setName("Polska");
         countryRepo.save(country);
+
         cityService.createNewCity(country, "Szczecin");
 
         TripDTO trip = new TripDTO();
@@ -46,16 +48,16 @@ public class MainController {
         trip.setPromotion(true);
         tripService.updateTrip(trip);
 
-//        CityDTO city2 = new CityDTO();
-//        city2.setName("Berlin");
-//        cityService.updateCity(city2);
-//        TripDTO trip2 = new TripDTO();
-//        trip2.setNumberOfDays(8);
-//        trip2.setAddultPrice(2000d);
-//        trip2.setDestinationName(city2);
-//        trip2.setName("Wycieczka na Majorrrę");
-//        trip2.setPromotion(true);
-//        tripService.updateTrip(trip2);
+        cityService.createNewCity(country, "Stargard");
+
+        TripDTO trip2 = new TripDTO();
+        trip2.setNumberOfDays(8);
+        trip2.setAddultPrice(2000d);
+        City c =cityService.findCity("Stargard");
+        trip2.setDestinationName(c);
+        trip2.setName("Wycieczka na Majorrrę");
+        trip2.setPromotion(true);
+        tripService.updateTrip(trip2);
 //
 //        CityDTO city3 = new CityDTO();
 //        city3.setName("Amsterdam");

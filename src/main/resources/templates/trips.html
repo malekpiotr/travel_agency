@@ -25,12 +25,14 @@
             <h1>Wycieczki</h1>
             <table>
                 <tr>
-                    <th>ID</th>
-                    <th>NAZWA</th>
+                    <th>LP</th>
+                    <th>Nazwa</th>
+                    <th>Miasto</th>
                 </tr>
                 <tr th:each="trip,iterationStatus : ${trips}">
                     <td th:text="${iterationStatus.count}">1</td>
                     <td th:text="${trip.getName()}">Name</td>
+                    <td th:text="${trip.getDestinationName().getName()}">destinationName</td>
                 </tr>
             </table>
         </div>
