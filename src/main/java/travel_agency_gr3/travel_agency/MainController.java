@@ -17,32 +17,32 @@ public class MainController {
 
     String someText = "Promowane oferty";
 
-//    @EventListener(ApplicationReadyEvent.class)
-//    public void addTrip(){
-//        TripDTO trip = new TripDTO();
-//        trip.setNumberOfDays(8);
-//        trip.setAddultPrice(2000d);
-//        trip.setDestinationName("Italy");
-//        trip.setName("Wycieczka do Włoch");
-//        trip.setPromotion(true);
-//        tripService.updateTrip(trip);
-//
-//        TripDTO trip2 = new TripDTO();
-//        trip2.setNumberOfDays(8);
-//        trip2.setAddultPrice(2000d);
-//        trip2.setDestinationName("Majorka");
-//        trip2.setName("Wycieczka na Majorrrę");
-//        trip2.setPromotion(true);
-//        tripService.updateTrip(trip2);
-//
-//        TripDTO trip3 = new TripDTO();
-//        trip3.setNumberOfDays(8);
-//        trip3.setAddultPrice(2000d);
-//        trip3.setDestinationName("Greece");
-//        trip3.setName("Wycieczka do Grecji");
-//        trip3.setPromotion(true);
-//        tripService.updateTrip(trip3);
-//    }
+    @EventListener(ApplicationReadyEvent.class)
+    public void addTrip(){
+        TripDTO trip = new TripDTO();
+        trip.setNumberOfDays(8);
+        trip.setAddultPrice(2000d);
+        trip.setDestinationName("Italy");
+        trip.setName("Wycieczka do Włoch");
+        trip.setPromotion(true);
+        tripService.updateTrip(trip);
+
+        TripDTO trip2 = new TripDTO();
+        trip2.setNumberOfDays(8);
+        trip2.setAddultPrice(2000d);
+        trip2.setDestinationName("Majorka");
+        trip2.setName("Wycieczka na Majorrrę");
+        trip2.setPromotion(true);
+        tripService.updateTrip(trip2);
+
+        TripDTO trip3 = new TripDTO();
+        trip3.setNumberOfDays(8);
+        trip3.setAddultPrice(2000d);
+        trip3.setDestinationName("Greece");
+        trip3.setName("Wycieczka do Grecji");
+        trip3.setPromotion(true);
+        tripService.updateTrip(trip3);
+    }
 
     @GetMapping("/trips")
     public ModelAndView getMain() {
