@@ -1,6 +1,7 @@
 package travel_agency_gr3.travel_agency;
 
 import lombok.*;
+import travel_agency_gr3.travel_agency.entity.City;
 import travel_agency_gr3.travel_agency.entity.FoodType;
 
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class TripDTO {
     private Long id;
-    private String destinationName;
+    private City destinationName;
     private LocalDateTime dateOfDeparture;
     private LocalDateTime dateOfReturn;
     private int numberOfDays;

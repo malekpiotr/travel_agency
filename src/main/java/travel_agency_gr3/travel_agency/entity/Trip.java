@@ -16,9 +16,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Trip extends BaseEntity{
-
-    private String destinationName;
+public class Trip extends BaseEntity {
+    @OneToOne
+    private City destinationName;
     private LocalDateTime dateOfDeparture;
     private LocalDateTime dateOfReturn;
     private Integer numberOfDays;

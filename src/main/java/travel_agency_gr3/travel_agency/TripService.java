@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import travel_agency_gr3.travel_agency.datatables.DataTablesOrder;
 import travel_agency_gr3.travel_agency.datatables.DataTablesResponse;
+import travel_agency_gr3.travel_agency.entity.City;
 import travel_agency_gr3.travel_agency.entity.FoodType;
 import travel_agency_gr3.travel_agency.entity.QTrip;
 import travel_agency_gr3.travel_agency.entity.Trip;
@@ -32,20 +33,21 @@ public class TripService {
     @Autowired
     private TripRepo<Trip> tripRepo;
 
-    public void createNewTrip(String destinationName,
+    public void createNewTrip(City destinationName,
                               LocalDateTime dateOfDeparture,
                               LocalDateTime dateOfReturn,
                               Integer numberOfDays,
                               FoodType foodType,
                               Double addultPrice,
                               Double childPrice,
+                              String name,
                               Integer numberAdultPlaces,
                               Integer numberChildPlaces,
                               boolean promotion) {
         Trip trip = new Trip();
         trip.setAddultPrice(addultPrice);
         trip.setDestinationName(destinationName);
-        trip.setName(destinationName);
+        trip.setName(name);
         trip.setNumberOfDays(numberOfDays);
         trip.setChildPrice(childPrice);
         trip.setDateOfDeparture(dateOfDeparture);
@@ -118,7 +120,7 @@ public class TripService {
         return StringUtils.isBlank(query) ? supplierForBlankQuery.apply(query) : supplierForNotBlankQuery.apply(query);
     }
     private void mockTrip(String name,
-                             String destinationName,
+                             City destinationName,
                              LocalDateTime dateOfDeparture,
                              LocalDateTime dateOfReturn,
                              int numberOfDays,
