@@ -7,6 +7,7 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -18,8 +19,8 @@ import java.time.LocalDateTime;
 public class Trip extends BaseEntity {
     @OneToOne
     private City destinationName;
-    private LocalDateTime dateOfDeparture;
-    private LocalDateTime dateOfReturn;
+    private LocalDate dateOfDeparture;
+    private LocalDate dateOfReturn;
     private Integer numberOfDays;
     @Enumerated(EnumType.STRING)
     private FoodType foodType;

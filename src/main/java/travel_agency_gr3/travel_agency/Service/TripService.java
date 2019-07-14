@@ -17,6 +17,7 @@ import travel_agency_gr3.travel_agency.entity.QTrip;
 import travel_agency_gr3.travel_agency.entity.Trip;
 import travel_agency_gr3.travel_agency.repository.TripRepo;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -32,8 +33,8 @@ public class TripService {
     private TripRepo<Trip> tripRepo;
 
     public void createNewTrip(City destinationName,
-                              LocalDateTime dateOfDeparture,
-                              LocalDateTime dateOfReturn,
+                              LocalDate dateOfDeparture,
+                              LocalDate dateOfReturn,
                               Integer numberOfDays,
                               FoodType foodType,
                               Double addultPrice,
@@ -55,21 +56,21 @@ public class TripService {
         tripRepo.save(trip);
     }
 
-    public void updateTrip(TripDTO tripDTO){
+    public void updateTrip(TripDTO tripDTO) {
         Trip t = tripDTOBuilder.buildEntity(tripDTO);
         tripRepo.save(t);
     }
 
-    public Optional<Trip> findTrip(Long id){
+    public Optional<Trip> findTrip(Long id) {
         return tripRepo.findById(id);
     }
 
-    public List<Trip> findPromotionTrips(){
+    public List<Trip> findPromotionTrips() {
         return tripRepo.findPromotionTrip();
     }
 
 
-    public List<Trip> findTripToEdit(String query, String foodType){
+    public List<Trip> findTripToEdit(String query, String foodType) {
         return findTripQuery(query, foodType);
     }
 
@@ -109,42 +110,14 @@ public class TripService {
         dtResponse.setRecordsFiltered((int) tripByName.getTotalElements());
         return dtResponse;
     }
+
     private Sort getSort(String name, String direction) {
         return direction.equalsIgnoreCase(DataTablesOrder.Direction.asc.name()) ? Sort.by(name).ascending() : Sort.by(name).descending();
     }
+
     private Page<Trip> findTripByName(String query, int page, int size, Sort sort) {
         Function<String, Page<Trip>> supplierForNotBlankQuery = (q) -> tripRepo.findAll(QTrip.trip.name.likeIgnoreCase("%" + q + "%").and(QTrip.trip.numberAdultPlaces.goe(1)), PageRequest.of(page, size, sort));
         Function<String, Page<Trip>> supplierForBlankQuery = (q) -> tripRepo.findAll(QTrip.trip.numberAdultPlaces.goe(1), PageRequest.of(page, size, sort));
         return StringUtils.isBlank(query) ? supplierForBlankQuery.apply(query) : supplierForNotBlankQuery.apply(query);
     }
-    private void mockTrip(String name,
-                             City destinationName,
-                             LocalDateTime dateOfDeparture,
-                             LocalDateTime dateOfReturn,
-                             int numberOfDays,
-                             FoodType foodType,
-                             double addultPrice,
-                             double childPrice,
-                             int numberAdultPlaces,
-                             int numberChildPlaces,
-                             boolean promotion)
-
-    {
-        Trip trip = new Trip();
-        trip.setAddultPrice(addultPrice);
-        trip.setChildPrice(childPrice);
-        trip.setDateOfDeparture(dateOfDeparture);
-        trip.setDateOfReturn(dateOfReturn);
-        trip.setFoodType(foodType);
-        trip.setDestinationName(destinationName);
-        trip.setName(name);
-        trip.setNumberAdultPlaces(numberAdultPlaces);
-        trip.setNumberChildPlaces(numberChildPlaces);
-        trip.setNumberOfDays(numberOfDays);
-        trip.isPromotion();
-        tripRepo.save(trip);
-    }
-
-
-
 }

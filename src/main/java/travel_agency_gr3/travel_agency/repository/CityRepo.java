@@ -10,8 +10,12 @@ import java.util.List;
 
 public interface CityRepo<T extends City> extends JpaRepository<City, Long>, QuerydslPredicateExecutor<City> {
 
-
     @Query("SELECT c FROM City c where (c.name)=?1")
     City findCityByName(String name);
 
+    @Query("SELECT c FROM City c where (c.name)=?1")
+    Long findCityByNameFromId(String name);
+
+    @Query("SELECT c FROM City c where (c.name)=?1")
+    List<City> findCityByNameList(String name);
 }
