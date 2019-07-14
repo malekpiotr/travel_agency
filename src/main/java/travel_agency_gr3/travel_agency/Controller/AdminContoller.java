@@ -17,9 +17,8 @@ import travel_agency_gr3.travel_agency.entity.FoodType;
 import javax.validation.Valid;
 import java.time.LocalDate;
 
-
-@RequestMapping("/admin")
 @Controller
+@RequestMapping("/admin")
 public class AdminContoller {
     @Autowired
     TripService tripService;
@@ -36,17 +35,17 @@ public class AdminContoller {
     }
 
     @PostMapping(value = "/addtrip")
-    public String addTrip(@ModelAttribute(name = "tripFormData") @Valid TripDTO trip, Model model, BindingResult bindingResult) {
-        LocalDate start = LocalDate.parse(trip.getDateOfDeparture());
-        LocalDate rtn = LocalDate.parse(trip.getDateOfReturn());
-        trip.setNumberOfDays(rtn.getDayOfYear() - start.getDayOfYear());
-
+    public String addTrip(@ModelAttribute(name = "tripFormData") @Valid TripDTO trip, BindingResult bindingResult,Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("foodtypes",  FoodType.values());
             return "addTripForm";
         }
+        LocalDate start = LocalDate.parse(trip.getDateOfDeparture());
+        LocalDate rtn = LocalDate.parse(trip.getDateOfReturn());
+        trip.setNumberOfDays(rtn.getDayOfYear() - start.getDayOfYear());
         tripService.updateTrip(trip);
         model.addAttribute("addTripData", trip.getName());
         return "addTripEffect";
     }
 }
+

@@ -17,25 +17,35 @@ import java.util.Optional;
 public class TripDTO {
     private Long id;
     private Long destinationId;
-    @NotNull(message = "Wymagane przynajmniej 3 znaki(pierwsza litera duża, reszta małe).")
+    @Pattern(regexp = "^[\\p{Lu}][\\p{Ll}]{2,}$", message = "Wymagane przynajmniej 3 znaki(pierwsza litera duża, reszta małe).")
     private String name;
 
-    //@Pattern(regexp = "^[\\p{Lu}][\\p{Ll}]{2,}$", message = "Wymagane przynajmniej 3 znaki(pierwsza litera duża, reszta małe).")
     private String destinationName;
 
     @Pattern(regexp = "^(19|20)[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|(1|2)[0-9]|3[0-1])$", message = "Zły format. Data powinna być podana w formacie RRRR-MM-DD")
     private String dateOfDeparture;
+
     @Pattern(regexp = "^(19|20)[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|(1|2)[0-9]|3[0-1])$", message = "Zły format. Data urodzin powinna być podana w formacie RRRR-MM-DD")
     private String dateOfReturn;
+
     private Integer numberOfDays;
+
     @NotNull(message = "Pole musi zostać wypełnione")
     private FoodType foodType;
+
+    @NotNull(message = "Pole musi zostać wypełnione")
     @Max(9)
     private Double addultPrice;
+
+    @NotNull(message = "Pole musi zostać wypełnione")
     @Max(9)
     private Double childPrice;
+
+    @NotNull(message = "Pole musi zostać wypełnione")
     @Max(9)
     private Integer numberAdultPlaces;
+
+    @NotNull(message = "Pole musi zostać wypełnione")
     @Max(9)
     private Integer numberChildPlaces;
     private boolean promotion;
