@@ -7,8 +7,8 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -16,11 +16,11 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Trip extends BaseEntity{
-
-    private String destinationName;
-    private LocalDateTime dateOfDeparture;
-    private LocalDateTime dateOfReturn;
+public class Trip extends BaseEntity {
+    @OneToOne
+    private City destinationName;
+    private LocalDate dateOfDeparture;
+    private LocalDate dateOfReturn;
     private Integer numberOfDays;
     @Enumerated(EnumType.STRING)
     private FoodType foodType;

@@ -1,10 +1,12 @@
-package travel_agency_gr3.travel_agency;
+package travel_agency_gr3.travel_agency.Controller;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import travel_agency_gr3.travel_agency.DTO.TripDTO;
+import travel_agency_gr3.travel_agency.Service.TripService;
 import travel_agency_gr3.travel_agency.datatables.DataTablesResponse;
 
 import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
