@@ -37,7 +37,9 @@ public class MainController {
     @Autowired
     CityDTOBuilder cityDTOBuilder;
 
-    String someText = "Promowane oferty";
+    String promotion = "Promowane oferty";
+
+    String notPromotion = "Pozostałe oferty";
 
     @GetMapping("/")
     public ModelAndView getIndex() {
@@ -46,9 +48,13 @@ public class MainController {
 
         m.setViewName("index");
 
-        m.addObject("someText", someText);
+        m.addObject("promotion", promotion);
 
-        m.addObject("trips", tripService.findPromotionTrips());
+        m.addObject("promotiontrips", tripService.findPromotionTrips());
+
+        m.addObject("notpromotion", notPromotion);
+
+        m.addObject("trips", tripService.findNotPromotionTrips());
 
         return m;
 
@@ -130,7 +136,7 @@ public class MainController {
 
         m.setViewName("trips");
 
-        m.addObject("someText", someText);
+        m.addObject("someText", promotion);
 
         m.addObject("trips", tripService.findPromotionTrips());
 

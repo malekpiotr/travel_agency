@@ -69,6 +69,9 @@ public class TripService {
         return tripRepo.findPromotionTrip();
     }
 
+    public List<Trip> findNotPromotionTrips() {
+        return tripRepo.findNotPromotionTrip();
+    }
 
     public List<Trip> findTripToEdit(String query, String foodType) {
         return findTripQuery(query, foodType);

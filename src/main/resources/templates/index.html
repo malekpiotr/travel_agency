@@ -7,34 +7,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <Title>"Biuro podróży grupa 3"</Title>
+    <Title>Biuro podróży grupa 3</Title>
     <div th:replace="fragments/header :: header-css"/>
 
 <body>
-<h1>Biuro podróży grupa 3</h1>
 <div th:replace="fragments/header :: header"></div>
 <div class="container-fluid">
-    <div class="row">
+    <div id="column">
         <div class="col-md-8">
-
-            <span th:text="${someText}" class="badge badge-info">Label</span>
-
-            <h1>Wycieczki</h1>
-            <table>
+            <span th:text="${promotion}">Label</span>
+            <table class="blueTable">
+                <thead>
                 <tr>
                     <th>LP</th>
                     <th>Nazwa</th>
                     <th>Miasto</th>
+                    <th>Państwo</th>
+                    <th>Szczegóły</th>
                 </tr>
+                </thead>
+            <tbody>
+                <tr th:each="trip,iterationStatus : ${promotiontrips}">
+                    <td th:text="${iterationStatus.count}">1</td>
+                    <td th:text="${trip.getName()}">Name</td>
+                    <td th:text="${trip.getDestinationName().getName()}">destinationName</td>
+                    <td th:text="${trip.getDestinationName().getCountry().name}">countryName</td>
+                    <td> <button class="buttonWiecej" type="submit">Więcej...</button></td>
+                </tr>
+            </tbody>
+            </table>
+
+            <span th:text="${notpromotion}">Label</span>
+            <table class="blueTable">
+                <thead>
+                <tr>
+                    <th>LP</th>
+                    <th>Nazwa</th>
+                    <th>Miasto</th>
+                    <th>Państwo</th>
+                    <th>Szczegóły</th>
+                </tr>
+                </thead>
+                <tbody>
                 <tr th:each="trip,iterationStatus : ${trips}">
                     <td th:text="${iterationStatus.count}">1</td>
                     <td th:text="${trip.getName()}">Name</td>
                     <td th:text="${trip.getDestinationName().getName()}">destinationName</td>
+                    <td th:text="${trip.getDestinationName().getCountry().name}">countryName</td>
+                    <td> <button class="buttonWiecej" type="submit">Więcej...</button></td>
                 </tr>
+                </tbody>
             </table>
-        </div>
-        <div class="col-md-4">
-
         </div>
     </div>
 </div>

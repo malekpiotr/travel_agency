@@ -11,11 +11,11 @@
     <div th:replace="fragments/header :: header-css"/>
     <link rel="stylesheet" th:href="@{/css/signin.css}"/>
 
-<body class="text-center">
+<body>
 <div th:replace="fragments/header :: header"></div>
 <div class="container">
 
-    <form class="form-addtrip" th:action="@{/login-process}" method="post">
+    <form class="form-signin" th:action="@{/login-process}" method="post">
 <!--        <p class="alert alert-danger" th:if="${param.error}" th:text="'Podany login lub hasło są nieprawidłowe'"></p>-->
 
         <h1 class="h3 mb-3 font-weight-normal">Zaloguj się</h1>
