@@ -5,6 +5,8 @@ table.blueTable {
     text-align: center;
     align-items: center;
     border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 table.blueTable td, table.blueTable th {
     border: 1px solid #AAAAAA;
@@ -56,4 +58,38 @@ table.blueTable tfoot .links a{
     color: #FFFFFF;
     padding: 2px 8px;
     border-radius: 5px;
+}
+.buttonWiecej {
+
+    /*Krok 2: Podstawowe style*/
+    /*display: block;*/
+    height: 25px;
+    width: 80px;
+    /*border: 2px solid rgba(33, 68, 72, 0.59);*/
+    overflow: hidden;
+
+    /*Krok 3: Style tekstu*/
+    color: #f2f2f2;
+    text-align: center;
+
+    /*Krok 4: Ozdobne style CSS3*/
+    background-color: #5592bb;
+
+    -webkit-border-radius: 50px;
+    -khtml-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
+/*Krok 3: Linkuj styl*/
+.buttonWiecej b{
+    float: left;
+    text-decoration: none;
+}
+.buttonWiecej b:hover{
+    background-color: #f1f6ff;
+    color: black;
+}
+.buttonWiecej b.active {
+    background-color: #4CAF50;
+    color: white;
 }
